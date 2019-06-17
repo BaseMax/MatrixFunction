@@ -67,13 +67,13 @@ class Array {
 			}
 		}
 
-		void getCofactor(double matrix[size][size], double output[size][size], const int excludingRow, const int excludingColumn, const int sizeentions) {
+		void getCofactor(double matrix[size][size], double output[size][size], const int excludingRow, const int excludingColumn, const int sizeEntions) {
 			int i = 0, j = 0;
-			for (int row = 0; row < sizeentions; row++) {
-				for (int column = 0; column < sizeentions; column++) {
+			for (int row = 0; row < sizeEntions; row++) {
+				for (int column = 0; column < sizeEntions; column++) {
 					if (row != excludingRow && column != excludingColumn) {
 						output[i][j++] = matrix[row][column];
-						if (j == sizeentions - 1) {
+						if (j == sizeEntions - 1) {
 							j = 0;
 							i++;
 						}
