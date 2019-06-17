@@ -25,6 +25,8 @@ int length;
 
 class Array {
 	private:
+		// int size = 3;
+		// int length;
 	public:
 		double arraySum(double* values, const int length) {
 			double result = 0;
