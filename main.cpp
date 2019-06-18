@@ -19,6 +19,8 @@
  * @url: https://en.wikipedia.org/wiki/Matrix_multiplication
  * @url: https://en.wikipedia.org/wiki/Cramer%27s_rule
  * @url: https://fa.wikipedia.org/wiki/%D9%82%D8%A7%D8%B9%D8%AF%D9%87_%DA%A9%D8%B1%D8%A7%D9%85%D8%B1
+ * @url: https://www.mathwords.com/c/cofactor_matrix.htm
+ * @url: https://www.geeksforgeeks.org/determinant-of-a-matrix/
 */
 const int size = 3;
 int length;
