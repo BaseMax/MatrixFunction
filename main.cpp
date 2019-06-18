@@ -82,15 +82,15 @@ class Array {
 			}
 		}
 
-		double arrayDeterminant(double matrix[size][size], const int sizeension) {
+		double arrayDeterminant(double matrix[size][size], const int sizeEnsion) {
 			double result = 0;
 			if (sizeension == 1)
 				return matrix[0][0];
 			double cofactor[size][size];
 			int sign = 1;
-			for (int f = 0; f < sizeension; f++) {
-				getCofactor(matrix, cofactor, 0, f, sizeension);
-				result += sign * matrix[0][f] * arrayDeterminant(cofactor, sizeension - 1);
+			for (int index = 0; index < sizeEnsion; index++) {
+				getCofactor(matrix, cofactor, 0, index, sizeEnsion);
+				result += sign * matrix[0][index] * arrayDeterminant(cofactor, sizeEnsion - 1);
 				sign = -sign;
 			}
 			return result;
@@ -106,12 +106,12 @@ int main() {
 	double* x = new double[length];
 	double* y = new double[length];
 
-	std::cout << "Enter " << length << " X values (double):" << std::endl;
+	std::cout << "Enter " << length << " First values:" << std::endl;
 	for (int i = 0; i < length; i++) {
 		std::cin >> x[i];
 	}
 
-	std::cout << "Enter " << length << " Y values (double):" << std::endl;
+	std::cout << "Enter " << length << " Second values:" << std::endl;
 	for (int i = 0; i < length; i++) {
 		std::cin >> y[i];
 	}
