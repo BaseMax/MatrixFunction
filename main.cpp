@@ -25,6 +25,11 @@
 const int size = 3;
 int length;
 
+int det3_3(int a[3][3]) {
+    int r=a[0][0] * a[1][1]*a[2][2] + a[0][1] * a[1][2] * a[2][0] + a[0][2] * a[1][0] * a[2][1] - a[0][2] * a[1][1] * a[2][0] - a[0][1] * a[1][0] * a[2][2] - a[0][0] * a[1][2] * a[2][1];
+    return r;
+}
+
 class Array {
 	private:
 		// int size = 3;
@@ -153,5 +158,17 @@ int main() {
 	std::cout << "B: " << result[1] << std::endl; // NAN
 	std::cout << "C: " << result[2] << std::endl; // NAN
 
+	/*
+	int A[3][3];
+	for(int i=0;i<3;i++) {
+		for(int j=0;j<3;j++) {
+			// cout << i << ", " << j << "\n";
+			cin>>A[i][j];
+		}
+	}
+	//////////////////////
+	int r=det(A);
+	cout << r;
+	*/
 	return 0;
 }
