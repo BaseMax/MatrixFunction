@@ -25,9 +25,40 @@
 const int size = 3;
 int length;
 
-int det3_3(int a[3][3]) {
-    int r=a[0][0] * a[1][1]*a[2][2] + a[0][1] * a[1][2] * a[2][0] + a[0][2] * a[1][0] * a[2][1] - a[0][2] * a[1][1] * a[2][0] - a[0][1] * a[1][0] * a[2][2] - a[0][0] * a[1][2] * a[2][1];
-    return r;
+int matrixDeterminant3_3(int array[3][3]) {
+    return array[0][0] * array[1][1]*array[2][2]
+	 + array[0][1] * array[1][2] * array[2][0]
+	 + array[0][2] * array[1][0] * array[2][1]
+	 - array[0][2] * array[1][1] * array[2][0]
+	 - array[0][1] * array[1][0] * array[2][2]
+	 - array[0][0] * array[1][2] * array[2][1];
+}
+
+void matrixMultiplication(int matrix[3][3], float number, float result[3][3]) {
+    for(int i=0; i<3; i++) {
+        for(int j=0; j<3; j++) {
+            result[i][j]=matrix[i][j] * number;
+        }
+    }
+}
+
+void matrixVariance(int matrix[3][3], float result[3][3]) {
+	// float determinant=(float) matrixDeterminant3_3(a);
+	// float determinant_1=1 / d;
+	int values[3][3]={
+		matrix[1][1]*matrix[2][2]-matrix[1][2]*matrix[2][1],
+		matrix[0][2]*matrix[2][1]-matrix[0][1]*matrix[2][2],
+		matrix[0][1]*matrix[1][2]-matrix[0][2]*matrix[1][1],
+		////////////////////////////////////////////////////
+		matrix[1][2]*matrix[2][0]-matrix[1][0]*matrix[2][2],
+		matrix[0][0]*matrix[2][2]-matrix[0][2]*matrix[2][0],
+		matrix[0][2]*matrix[1][0]-matrix[0][0]*matrix[1][2],
+		////////////////////////////////////////////////////
+		matrix[1][0]*matrix[2][1]-matrix[1][1]*matrix[2][0],
+		matrix[0][1]*matrix[2][0]-matrix[0][0]*matrix[2][1],
+		matrix[0][0]*matrix[1][1]-matrix[0][1]*matrix[1][0],
+	};
+	matrixMultiplication(values, (float) 1 / (float) matrixDeterminant3_3(matrix), result);
 }
 
 class Array {
@@ -157,18 +188,24 @@ int main() {
 	std::cout << "A: " << result[0] << std::endl; // NAN
 	std::cout << "B: " << result[1] << std::endl; // NAN
 	std::cout << "C: " << result[2] << std::endl; // NAN
-
-	/*
-	int A[3][3];
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////
+	int matrix[3][3];
+	float result[3][3];
 	for(int i=0;i<3;i++) {
 		for(int j=0;j<3;j++) {
 			// cout << i << ", " << j << "\n";
-			cin>>A[i][j];
+			cin>>matrix[i][j];
 		}
 	}
-	//////////////////////
-	int r=det(A);
-	cout << r;
-	*/
+	int determinant=matrixDeterminant3_3(matrix);
+	cout << determinant << endl;
+	matrixVariance(matrix, result);
+	for(int i=0;i<3;i++) {
+		for(int j=0;j<3;j++) {
+			cout<<result[i][j];
+		}
+		cout << endl;
+	}
 	return 0;
 }
